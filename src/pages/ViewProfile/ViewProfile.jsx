@@ -31,14 +31,14 @@ const ViewProfile = () => {
         <input
           id="name"
           className="input input-bordered w-full mb-5"
-          value={user.displayName}
+          value={user?.displayName}
           disabled={editStatus}
         />
         <label htmlFor="email">Email</label>
         <input
           id="email"
           className="input input-bordered w-full mb-5"
-          value={user.email}
+          value={user?.email}
           disabled
         />
         <label htmlFor="password">Change Password</label>

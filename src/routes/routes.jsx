@@ -31,7 +31,9 @@ const router = createBrowserRouter([
         path: "/Services/:id",
         element: <ServicesOrder />,
         loader: async ({ params }) =>
-          await fetch(`http://localhost:3000/services/${params.id}`),
+          await fetch(
+            `https://design-world-server.vercel.app/services/${params.id}`
+          ),
       },
     ],
   },
@@ -50,11 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path: "viewProfile",
-        element: (
-          <UserRoute>
-            <ViewProfile />
-          </UserRoute>
-        ),
+        element: <ViewProfile />,
       },
       {
         path: "AllServices",
@@ -76,7 +74,7 @@ const router = createBrowserRouter([
         path: "AllOrderRequest",
         element: (
           <AdminRoute>
-            <AllOrderRequest /> 
+            <AllOrderRequest />
           </AdminRoute>
         ),
       },

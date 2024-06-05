@@ -9,7 +9,7 @@ const GoogleLogin = () => {
   const navigate = useNavigate();
 
   const saveUserInfo = (data) => {
-    fetch("http://localhost:3000/users", {
+    fetch("https://design-world-server.vercel.app/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

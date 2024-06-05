@@ -12,13 +12,13 @@ const MyOrderList = () => {
   const [trigger, setTrigger] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/myOrderList/${user?.email}`)
+    fetch(`https://design-world-server.vercel.app/myOrderList/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrderList(data));
   }, [user, trigger]);
 
   const deleteServiceHandler = (id) => {
-    fetch(`http://localhost:3000/myOrderList/${id}`, {
+    fetch(`https://design-world-server.vercel.app/myOrderList/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

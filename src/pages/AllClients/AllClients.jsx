@@ -6,7 +6,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 const AllClients = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/users")
+    fetch("https://design-world-server.vercel.app/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);

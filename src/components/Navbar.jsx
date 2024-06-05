@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useUserRole from "../hooks/useUserRole";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isUser] = useUserRole(user?.email);
+  const navigate = useNavigate();
 
   const navData = [
     { text: "Home", link: "/" },
@@ -74,7 +76,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => logOut()}
+                    onClick={() => logOut().then(() => navigate("/"))}
                     className="btn btn-sm bg-error text-white"
                   >
                     Log Out

@@ -7,7 +7,7 @@ const useUserRole = (email) => {
   const [isUserLoading, setIsUserLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/roleOfUser/${email}`)
+    fetch(`https://design-world-server.vercel.app/roleOfUser/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setIsUser(data?.role);

@@ -31,7 +31,7 @@ const ServicesOrder = () => {
       deliveryLocation,
     };
 
-    fetch("http://localhost:3000/AllOrderList", {
+    fetch("https://design-world-server.vercel.app/AllOrderList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
