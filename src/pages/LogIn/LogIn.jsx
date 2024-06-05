@@ -47,7 +47,8 @@ const LogIn = () => {
                 type="email"
                 required
                 className="w-full px-3 py-2 border rounded-t-md focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Email address"
+                placeholder="Email address" 
+                defaultValue={'admin@gmail.com'}
               />
             </div>
             <div className="mb-4">
@@ -61,6 +62,7 @@ const LogIn = () => {
                 required
                 className="w-full px-3 py-2 border rounded-b-md focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Password"
+                defaultValue={"123456"}
               />
             </div>
           </div>

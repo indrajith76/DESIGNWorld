@@ -15,13 +15,7 @@ const DashboardLayout = () => {
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content p-5 border-t">
           {/* Page content here */}
-          <Outlet />
-          <label
-            htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label>
+          <Outlet /> 
         </div>
         <div className="drawer-side">
           <label
@@ -33,7 +27,7 @@ const DashboardLayout = () => {
             {/* Sidebar content here */}
 
             {/* Admin  */}
-            {isUser == "admin" && (
+            {isUser === "admin" && (
               <>
                 <li>
                   <Link to="/dashboard/AllServices">All Services</Link>

@@ -8,6 +8,8 @@ import DashboardPage from "../pages/DashboardPage/DashboardPage";
 import Home from "../pages/Home/Home";
 import LogIn from "../pages/LogIn/LogIn";
 import MyOrderList from "../pages/MyOrderList/MyOrderList";
+import ServicesOrder from "../pages/ServicesOrder/ServicesOrder";
+import ServicesPage from "../pages/ServicesPage/ServicesPage";
 import SignUp from "../pages/SignUp/SignUp";
 import ViewProfile from "../pages/ViewProfile/ViewProfile";
 import AdminRoute from "./private/AdminRoute";
@@ -21,6 +23,16 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/login", element: <LogIn /> },
       { path: "/signup", element: <SignUp /> },
+      {
+        path: "/ServicesPage",
+        element: <ServicesPage />,
+      },
+      {
+        path: "/Services/:id",
+        element: <ServicesOrder />,
+        loader: async ({ params }) =>
+          await fetch(`http://localhost:3000/services/${params.id}`),
+      },
     ],
   },
   {
@@ -54,15 +66,27 @@ const router = createBrowserRouter([
       },
       {
         path: "AllClients",
-        element: <AllClients />,
+        element: (
+          <AdminRoute>
+            <AllClients />
+          </AdminRoute>
+        ),
       },
       {
         path: "AllOrderRequest",
-        element: <AllOrderRequest />,
+        element: (
+          <AdminRoute>
+            <AllOrderRequest /> 
+          </AdminRoute>
+        ),
       },
       {
         path: "MyOrderList",
-        element: <MyOrderList />,
+        element: (
+          <UserRoute>
+            <MyOrderList />
+          </UserRoute>
+        ),
       },
     ],
   },

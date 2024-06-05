@@ -1,10 +1,21 @@
 import React from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 
 const ViewProfile = () => {
-  const { user } = useAuth();
+  const { user, changePassword } = useAuth();
   const [editStatus, setEditStatus] = useState(true);
+  const [pass, setPass] = useState(null);
+
+  const changePasswordHandler = (password) => {
+    changePassword(password).then((r) => {
+      toast.success("Password changed successfully");
+    });
+  };
+
+  console.log(pass);
+
   return (
     <div className="w-96 mx-auto">
       <img
@@ -35,6 +46,7 @@ const ViewProfile = () => {
           id="password"
           className="input input-bordered w-full mb-5"
           placeholder={editStatus ? "********" : "Enter New Password"}
+          onChange={(e) => setPass(e.target.value)}
           disabled={editStatus}
         />
         {editStatus && (
@@ -47,7 +59,12 @@ const ViewProfile = () => {
         )}
         {!editStatus && (
           <div className="flex justify-center">
-            <button className="btn text-white bg-sky-600">Save</button>
+            <button
+              onClick={() => changePasswordHandler(pass)}
+              className="btn text-white bg-sky-600"
+            >
+              Save
+            </button>
             <button
               onClick={() => setEditStatus(!editStatus)}
               className="btn btn-error text-white"
