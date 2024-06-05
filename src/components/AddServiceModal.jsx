@@ -19,7 +19,7 @@ const AddServiceModal = ({ trigger, setTrigger }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/services", {
+    fetch("https://design-world-server.vercel.app/services", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

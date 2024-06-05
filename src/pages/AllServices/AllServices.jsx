@@ -16,7 +16,7 @@ const AllServices = () => {
   }, [trigger]);
 
   const deleteHandler = (id) => {
-    fetch(`http://localhost:3000/services/${id}`, {
+    fetch(`https://design-world-server.vercel.app/services/${id}`, {
       method: "delete",
     })
       .then((res) => res.json())
