@@ -125,7 +125,7 @@ const Navbar = () => {
               <li>
                 <div className="dropdown dropdown-end dropdown-bottom rounded-full hover:bg-white">
                   <div tabIndex={0} className="avatar">
-                    <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <div className="w-10 rounded-full ring ring-sky-600 ring-offset-base-100 ring-offset-2">
                       <img
                         className="hover:opacity-70"
                         src={
