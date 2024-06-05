@@ -1,12 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import GoogleLogin from "../../components/GoogleLogin";
 
 const SignUp = () => {
   const { createUser } = useAuth();
+  const navigate = useNavigate();
+
+  const saveUserInfo = (data) => {
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +30,8 @@ const SignUp = () => {
     createUser(name, email, password)
       .then((result) => {
         toast.success("Successfully Login!");
+        saveUserInfo({ name, email });
+        navigate("/");
         form.reset();
       })
       .catch((error) => console.log(error));

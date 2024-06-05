@@ -5,6 +5,7 @@ import DashboardPage from "../pages/DashboardPage/DashboardPage";
 import Home from "../pages/Home/Home";
 import LogIn from "../pages/LogIn/LogIn";
 import SignUp from "../pages/SignUp/SignUp";
+import ViewProfile from "../pages/ViewProfile/ViewProfile";
 import AdminRoute from "./private/AdminRoute";
 
 const router = createBrowserRouter([
@@ -24,11 +25,15 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </AdminRoute>
     ),
-    errorElement: <h1>ERROR</h1>,
+    errorElement: <h1 className="text-7xl">ERROR</h1>,
     children: [
       {
         path: "/dashboard",
         element: <DashboardPage />,
+      },
+      {
+        path: "viewProfile",
+        element: <ViewProfile />,
       },
     ],
   },

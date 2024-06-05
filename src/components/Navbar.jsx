@@ -122,11 +122,17 @@ const Navbar = () => {
           )}
           {user && (
             <>
-              <li  >
+              <li>
                 <div className="dropdown dropdown-end dropdown-bottom rounded-full hover:bg-white">
                   <div tabIndex={0} className="avatar">
                     <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img className="hover:opacity-70" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                      <img
+                        className="hover:opacity-70"
+                        src={
+                          user?.photoURL ||
+                          "https://beforeigosolutions.com/wp-content/uploads/2021/12/dummy-profile-pic-300x300-1.png"
+                        }
+                      />
                     </div>
                   </div>
                   <ul
@@ -134,7 +140,7 @@ const Navbar = () => {
                     className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                   >
                     <li>
-                      <Link to="">View Profile</Link>
+                      <Link to="/dashboard/viewProfile">View Profile</Link>
                     </li>
                     <li>
                       <button

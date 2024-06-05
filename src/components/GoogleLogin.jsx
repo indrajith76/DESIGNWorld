@@ -2,12 +2,28 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const GoogleLogin = () => {
   const { googleLogin } = useAuth();
+  const navigate = useNavigate();
+
+  const saveUserInfo = (data) => {
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
 
   const googleLoginHandler = () => {
     googleLogin().then((result) => {
+      saveUserInfo({ name: result.user.displayName, email: result.user.email });
+      navigate("/");
       toast.success("Successfully Login!");
     });
   };

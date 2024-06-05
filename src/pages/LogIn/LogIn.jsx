@@ -1,16 +1,15 @@
 import React from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom"; 
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
-import GoogleLogin from "../../components/GoogleLogin";
+import GoogleLogin from "../../components/GoogleLogin"; 
 
-const LogIn = () => {
+const LogIn = () => {  
   const { signIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location?.state?.from?.pathname || "/";
-  console.log(location?.state?.from);
 
   const handleSubmit = (e) => {
     e.preventDefault();
