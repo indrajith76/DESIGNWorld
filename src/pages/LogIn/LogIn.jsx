@@ -2,9 +2,10 @@ import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
-import GoogleLogin from "../../components/GoogleLogin"; 
+import GoogleLogin from "../../components/GoogleLogin";
+import ForgetPassModal from "../../components/ForgetPassModal";
 
-const LogIn = () => {  
+const LogIn = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,7 +24,7 @@ const LogIn = () => {
         toast.success("Successfully Login!");
         form.reset();
       })
-      .catch((error) => toast.error("Login Failed!"));
+      .catch((error) => toast.error(error.message.slice(22, 35)));
   };
 
   return (
@@ -47,8 +48,8 @@ const LogIn = () => {
                 type="email"
                 required
                 className="w-full px-3 py-2 border rounded-t-md focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Email address" 
-                defaultValue={'admin@gmail.com'}
+                placeholder="Email address"
+                defaultValue={"admin@gmail.com"}
               />
             </div>
             <div className="mb-4">
@@ -68,12 +69,15 @@ const LogIn = () => {
           </div>
           <div className="flex items-center justify-between">
             <div className="text-sm">
-              <a
-                href="#"
-                className="font-medium text-blue-600 hover:text-blue-500"
+              <label
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
+                className="cursor-pointer font-medium text-blue-600 hover:text-blue-500"
               >
                 Forget your password?
-              </a>
+              </label>
+              <ForgetPassModal />
             </div>
           </div>
           <div>

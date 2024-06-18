@@ -15,7 +15,7 @@ const DashboardLayout = () => {
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content p-5 border-t">
           {/* Page content here */}
-          <Outlet /> 
+          <Outlet />
         </div>
         <div className="drawer-side">
           <label
@@ -39,9 +39,6 @@ const DashboardLayout = () => {
                   <Link to="/dashboard/AllOrderRequest">
                     All Order Requests
                   </Link>
-                </li>
-                <li>
-                  <Link to="/">Sales</Link>
                 </li>
               </>
             )}

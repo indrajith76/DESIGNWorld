@@ -1,15 +1,28 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { FaUserCircle, FaRegEdit } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import { FaUserCircle, FaBan } from "react-icons/fa";
+import {toast} from 'react-hot-toast';
 
 const AllClients = () => {
   const [users, setUsers] = useState([]);
+  const [trigger, setTrigger] = useState(false);
   useEffect(() => {
     fetch("https://design-world-server.vercel.app/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
-  }, []);
+  }, [trigger]);
+
+  const userBanHandler = (id) => {
+    fetch(`http://localhost:3000/users/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setTrigger(!trigger);
+        toast.success("User Banned!")
+      });
+  };
+
   return (
     <div>
       <h1 className="text-2xl mb-10">All Clients</h1>
@@ -36,11 +49,12 @@ const AllClients = () => {
                 <td>{users.name}</td>
                 <td>{users.email}</td>
                 <td className="flex items-center justify-center gap-2">
-                  <button className="btn btn-sm btn-success text-white">
-                    <FaRegEdit />
-                  </button>
-                  <button className="btn btn-sm btn-error text-white">
-                    <RiDeleteBin5Fill />
+                  <button
+                    onClick={() => userBanHandler(users._id)}
+                    className="btn btn-sm btn-error text-white"
+                  >
+                    Ban User
+                    <FaBan />
                   </button>
                 </td>
               </tr>

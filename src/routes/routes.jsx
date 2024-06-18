@@ -5,6 +5,8 @@ import AllClients from "../pages/AllClients/AllClients";
 import AllOrderRequest from "../pages/AllOrderRequest/AllOrderRequest";
 import AllServices from "../pages/AllServices/AllServices";
 import DashboardPage from "../pages/DashboardPage/DashboardPage";
+import EditService from "../pages/EditService/EditService";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import LogIn from "../pages/LogIn/LogIn";
 import MyOrderList from "../pages/MyOrderList/MyOrderList";
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <DashboardLayout />,
-    errorElement: <h1 className="text-7xl">ERROR</h1>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/dashboard",
@@ -61,6 +63,16 @@ const router = createBrowserRouter([
             <AllServices />
           </AdminRoute>
         ),
+      },
+      {
+        path: "EditService/:id",
+        element: (
+          <AdminRoute>
+            <EditService />
+          </AdminRoute>
+        ),
+        loader: async ({ params }) =>
+          await fetch(`http://localhost:3000/services/${params.id}`),
       },
       {
         path: "AllClients",

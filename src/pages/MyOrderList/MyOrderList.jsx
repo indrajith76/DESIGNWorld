@@ -1,9 +1,10 @@
-import { async } from "@firebase/util";
+import {
+  BsCheckCircleFill,
+  BsExclamationCircleFill,
+  BsFillXCircleFill,
+} from "react-icons/bs";
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { FaRegEdit } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
 const MyOrderList = () => {
@@ -38,6 +39,7 @@ const MyOrderList = () => {
                 <th>Sl.No</th>
                 <th>Service Name</th>
                 <th>Price</th>
+                <th className="text-center">Status</th>
                 <th className="text-center">Action</th>
               </tr>
             </thead>
@@ -48,12 +50,26 @@ const MyOrderList = () => {
 
                   <td>{item.serviceName}</td>
                   <td className="text-lg">${item.price}</td>
+                  <td>
+                    {item?.status ? (
+                      <p className="flex items-center justify-center gap-2">
+                        <BsCheckCircleFill className="text-green-500 text-xl" />
+                        Order Accepted
+                      </p>
+                    ) : (
+                      <p className="flex items-center justify-center gap-2">
+                        <BsExclamationCircleFill className="text-red-500 text-xl" />
+                        Pending
+                      </p>
+                    )}
+                  </td>
                   <td className="flex items-center justify-center gap-2">
                     <button
                       onClick={() => deleteServiceHandler(item._id)}
                       className="btn btn-sm btn-error text-white"
                     >
-                      <RiDeleteBin5Fill />
+                      <BsFillXCircleFill />
+                      Cancel
                     </button>
                   </td>
                 </tr>
