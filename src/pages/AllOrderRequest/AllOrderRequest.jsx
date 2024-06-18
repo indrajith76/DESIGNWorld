@@ -27,7 +27,9 @@ const AllOrderRequest = () => {
     const text = e.target.search.value;
 
     setLoading(true);
-    fetch(`http://localhost:3000/AllOrderList?${searchType}=${text}`)
+    fetch(
+      `https://design-world-server.vercel.app/AllOrderList?${searchType}=${text}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setAllOrderReq([]);
@@ -38,7 +40,7 @@ const AllOrderRequest = () => {
 
   const acceptOrderHandler = (id) => {
     setLoading(true);
-    fetch(`http://localhost:3000/AllOrderList/${id}`, {
+    fetch(`https://design-world-server.vercel.app/AllOrderList/${id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
     })

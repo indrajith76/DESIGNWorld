@@ -23,7 +23,7 @@ const DashboardPage = () => {
   }, []);
 
   const sumOfSales = allOrderReq.reduce(
-    (pre, current) => parseFloat(pre + current.price),
+    (pre, current) => parseFloat(pre) + parseFloat(current.price),
     0
   );
 

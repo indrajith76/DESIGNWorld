@@ -72,7 +72,9 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: async ({ params }) =>
-          await fetch(`http://localhost:3000/services/${params.id}`),
+          await fetch(
+            `https://design-world-server.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "AllClients",

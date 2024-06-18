@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const AllServices = () => {
   const [loading, setLoading] = useState(false);
   const [services, setServices] = useState([]);
-  const [trigger, setTrigger] = useState(true);
+  const [trigger, setTrigger] = useState(true);      
 
   useEffect(() => {
     setLoading(true);
@@ -32,7 +32,7 @@ const AllServices = () => {
       .then(() => {
         setServices(!trigger);
         toast.success("Deleted Successfully!");
-        setLoading(false);
+        setLoading(false); 
       });
   };
 

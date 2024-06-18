@@ -6,7 +6,7 @@ const EditService = () => {
   const defaultData = useLoaderData();
   const [formData, setFormData] = useState({
     icon: defaultData.icon,
-    title: defaultData.serviceName,
+    title: defaultData.title,
     description: defaultData.description,
     price: defaultData.price,
   });
@@ -22,13 +22,16 @@ const EditService = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3000/services/${defaultData._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
+    fetch(
+      `https://design-world-server.vercel.app/services/${defaultData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((res) => res.json())
       .then(() => navigate("/dashboard/AllServices"));
   };
@@ -61,15 +64,15 @@ const EditService = () => {
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="serviceName"
+            htmlFor="title"
           >
             Service Name
           </label>
           <input
             type="text"
-            id="serviceName"
-            name="serviceName"
-            value={formData.serviceName}
+            id="title"
+            name="title"
+            value={formData.title}
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />

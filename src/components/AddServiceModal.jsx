@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const AddServiceModal = ({ trigger, setTrigger }) => {
   const [formData, setFormData] = useState({
     icon: "",
-    serviceName: "",
+    title: "",
     description: "",
     price: "",
   });
@@ -68,15 +68,15 @@ const AddServiceModal = ({ trigger, setTrigger }) => {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="serviceName"
+              htmlFor="title"
             >
               Service Name
             </label>
             <input
               type="text"
-              id="serviceName"
-              name="serviceName"
-              value={formData.serviceName}
+              id="title"
+              name="title"
+              value={formData.title}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />

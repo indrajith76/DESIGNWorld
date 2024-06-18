@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { FaUserCircle, FaBan } from "react-icons/fa";
-import {toast} from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 
 const AllClients = () => {
   const [users, setUsers] = useState([]);
@@ -13,13 +13,13 @@ const AllClients = () => {
   }, [trigger]);
 
   const userBanHandler = (id) => {
-    fetch(`http://localhost:3000/users/${id}`, {
+    fetch(`https://design-world-server.vercel.app/users/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
       .then(() => {
         setTrigger(!trigger);
-        toast.success("User Banned!")
+        toast.success("User Banned!");
       });
   };
 
